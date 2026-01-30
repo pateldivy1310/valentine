@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ffe6e6, #ffb3ba);
+            color: #d63384;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: fadeIn 2s;
+        }
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            animation: fadeIn 3s;
+        }
+        .heart {
+            font-size: 5em;
+            color: red;
+            animation: pulse 2s infinite;
+        }
+        img {
+            max-width: 300px;
+            border-radius: 10px;
+            margin-top: 20px;
+            animation: fadeIn 4s;
+        }
+        form {
+            margin-top: 30px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #d63384;
+            border-radius: 5px;
+            width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #d63384;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        button:hover {
+            background-color: #b0246a;
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .heart-particle {
+            position: absolute;
+            font-size: 2em;
+            color: red;
+            animation: float 5s linear infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes float {
+            from { transform: translateY(100vh); }
+            to { transform: translateY(-100vh); }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <h1>Happy Valentine's Day, [Girlfriend's Name]! ❤️</h1>
+    <p>From [Your Name], with all my love.</p>
+    <p>You make every day special, and today is no exception. Here's to many more adventures together!</p>
+    <div class="heart">💖</div>
+    <!-- Optional: Add a photo of you two -->
+    <!-- <img src="your-photo.jpg" alt="Us together"> -->
+    
+    <form id="replyForm">
+        <input type="text" id="message" placeholder="Write a reply to [Your Name]..." required>
+        <button type="submit">Send Love Back ❤️</button>
+    </form>
+
+    <script>
+        // Floating hearts animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart-particle';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 500);
+
+        // Form submission (alerts a message since it's static)
+        document.getElementById('replyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const message = document.getElementById('message').value;
+            alert(`Thank you for your reply: "${message}"\n\nLove you too! 💕`);
+            document.getElementById('message').value = '';
+        });
+    </script>
+</body>
+</html>
